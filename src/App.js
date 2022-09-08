@@ -9,7 +9,6 @@ class App extends Component {
       tasks: [],
       inputValue: '',
     }
-  
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
   }
@@ -20,12 +19,12 @@ class App extends Component {
     })
   }
 
-  submit() {
+  submit(e) {
+    e.preventDefault();
     this.setState({
       tasks: [...this.state.tasks, this.state.inputValue]
     })
   }
-
 
   render () {
 
@@ -33,6 +32,7 @@ class App extends Component {
       <div>
         <input type="text" value={this.state.value} onChange={this.handleChange} placeholder='Task name...'></input>
         <button type='submit' onClick={this.submit}>Submit</button>
+        <Overview tasks={this.state.tasks}/>
       </div>
     );
   }
